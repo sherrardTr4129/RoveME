@@ -19,13 +19,12 @@ void cmdVelCb(const geometry_msgs::Twist& msg) {
   int talonLSpeed;
 
   if (x == 0 && th == 0) {
-    moving = 0;
+
     TalonR.write(96);
     TalonL.write(96);
     return;
   }
-  /* Indicate that we are moving */
-  moving = 1;
+
   if (x == 0) {
     // Turn in place
     spd_right = th * wheelTrack / 2.0;
@@ -61,16 +60,16 @@ void cmdVelCb(const geometry_msgs::Twist& msg) {
   TalonL.write(talonLSpeed);
 }
 
-ros::Subscriber<std_msgs::Empty> motor_sub("/cmd_vel", messageCb );
+ros::Subscriber<geometry_msgs::Twist> cmdVelSub("/cmd_vel", &cmdVelCb);
 
 
 
 void setup()
 {
   TalonR.attach(6);
-  TalonL.attach(5):
+  TalonL.attach(5);
   nh.initNode();
-  nh.Subcribe(motor_sub);
+  nh.subscribe(cmdVelSub);
 }
 
 void loop()
