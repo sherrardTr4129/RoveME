@@ -1,10 +1,4 @@
 #include <Servo.h>
-
-/*
- * rosserial PubSub Example
- * Prints "hello world!" and toggles led
- */
-
 #include <ros.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Empty.h>
@@ -46,6 +40,7 @@ void cmdVelCb(const geometry_msgs::Twist& msg) {
     spd_left = x - th * wheelTrack / 2.0;
     spd_right = x + th * wheelTrack / 2.0;
   }
+  // speed mapping for use with Servo library
   if(spd_right < 0)
   {
    talonRSpeed = map(spd_right, -2.0, 0, 90, 180);
@@ -75,9 +70,7 @@ void setup()
   TalonR.attach(6);
   TalonL.attach(5):
   nh.initNode();
-  nh.advertise(chatter);
   nh.Subcribe(motor_sub);
-
 }
 
 void loop()
