@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/sherrardtr/ros/RoveME/roveme_ros_pkg/build/devel/setup.sh
