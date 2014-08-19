@@ -14,7 +14,6 @@ void cmdVelCb(const geometry_msgs::Twist& msg) {
   float x = msg.linear.x; // m/s
   float th = msg.angular.z; // rad/s
   float spd_left, spd_right;
-  float wheelTrack = 0.319186; //meters
   int talonRSpeed; 
   int talonLSpeed;
 
@@ -27,7 +26,7 @@ void cmdVelCb(const geometry_msgs::Twist& msg) {
 
   if (x == 0) {
     // Turn in place
-    spd_right = th * wheelTrack / 2.0;
+    spd_right = th / 2.0;
     spd_left = -spd_right;
   }
   else if (th == 0) {
@@ -36,8 +35,8 @@ void cmdVelCb(const geometry_msgs::Twist& msg) {
   }
   else {
     // Rotation about a point in space
-    spd_left = x - th * wheelTrack / 2.0;
-    spd_right = x + th * wheelTrack / 2.0;
+    spd_left = (x - th)/ 2.0;
+    spd_right = (x + th)/ 2.0;
   }
   // speed mapping for use with Servo library
   if(spd_right < 0)
