@@ -1,0 +1,14 @@
+<package>
+  <description brief="roveme_ros_pkg">
+
+     roveme_ros_pkg
+
+  </description>
+  <author>Trevor Sherrard</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/roveme_ros_pkg</url>
+
+</package>
+
+
