@@ -1,0 +1,29 @@
+<launch>
+ 
+ <!-- Don't forget to launch laser node and ros_serial server node --> 
+ <master auto="start"/>
+  
+
+
+ <!-- set up tf's -->
+ <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="1 0 0 0 0 0 1 base_link neato_laser 100" />
+ <node pkg="tf" type="static_transform_publisher" name="link2_broadcaster" args="1 0 0 0 0 0 1 odom base_link 100" />
+ <node pkg="tf" type="static_transform_publisher" name="link3_broadcaster" args="1 0 0 0 0 0 1 map odom 100" />
+
+
+
+
+ <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="map.pgm"/>
+
+
+  <!-- launch move base -->
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="local_costmap_params.yaml" command="load" />
+    <rosparam file="global_costmap_params.yaml" command="load" />
+    <rosparam file="base_local_planner_params.yaml" command="load" />
+  </node>
+</launch>
