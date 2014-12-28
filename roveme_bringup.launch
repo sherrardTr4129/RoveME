@@ -2,7 +2,7 @@
  
  <!-- Don't forget to launch laser node and ros_serial server node --> 
 
- <!-- launch kinect node -->
+ <!-- launch kinect driver -->
   <include file="$(find openni_launch)/launch/openni.launch"/>
 
  <!-- set up tf's -->
