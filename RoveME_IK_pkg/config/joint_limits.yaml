@@ -1,0 +1,26 @@
+joint_limits:
+  base_joint:
+    has_velocity_limits: true
+    max_velocity: 3
+    has_acceleration_limits: false
+    max_acceleration: 0
+  shoulder_joint:
+    has_velocity_limits: true
+    max_velocity: 3
+    has_acceleration_limits: false
+    max_acceleration: 0
+  elbow:
+    has_velocity_limits: true
+    max_velocity: 3
+    has_acceleration_limits: false
+    max_acceleration: 0
+  left_gripper:
+    has_velocity_limits: true
+    max_velocity: 3
+    has_acceleration_limits: false
+    max_acceleration: 0
+  right_gripper:
+    has_velocity_limits: true
+    max_velocity: 3
+    has_acceleration_limits: false
+    max_acceleration: 0
