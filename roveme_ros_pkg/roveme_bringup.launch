@@ -39,7 +39,6 @@
    <param name="recovery_alpha_fast" value="0.0"/>
  </node> 
 
-
  <!-- launch move base -->
  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
    <rosparam file="costmap_common_params.yaml" command="load" ns="global_costmap" />
