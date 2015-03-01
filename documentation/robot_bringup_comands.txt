@@ -7,9 +7,10 @@ rosrun xv_11_laser_driver neato_laser_publisher _port:=/dev/ttyACM1 _firmware_ve
 in Desktop/neato_robot/2dnav_neato/launch:
 rosrun map_server map_server map.yaml
 rosrun tf static_transform_publisher 0 0 0 0 0 0 /base_link /neato_laser 100
-rosrun tf static_transform_publisher 0 0 0 0 0 0 /odom /base_link 100
-rosrun tf static_transform_publisher 0 0 0 0 0 0 /map /odom 100
+
 
 roslaunch move_base.launch
+
+rosrun amcl scan:=scan
 
 rviz can now be used to set nav goals
